@@ -1,0 +1,19 @@
+{
+  "name": "wmp-database",
+  "version": "1.0.0",
+  "description": "WMP Database — PostgreSQL schemas, migrations, seeds",
+  "scripts": {
+    "migrate": "node migrate.js",
+    "migrate:up": "node migrate.js up",
+    "migrate:status": "node migrate.js status",
+    "seed": "node seed.js",
+    "reset-admin-password": "node scripts/reset-admin-password.js",
+    "backup": "bash scripts/backup.sh",
+    "restore": "bash scripts/restore.sh"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "dotenv": "^16.4.5",
+    "pg": "^8.13.1"
+  }
+}
