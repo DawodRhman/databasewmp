@@ -1,4 +1,4 @@
-#!/bin/bash
+res#!/bin/bash
 # ─── PostgreSQL Restore Script ────────────────────────────────────────────
 # Usage: ./scripts/restore.sh <backup_file>
 # ────────────────────────────────────────────────────────────────────────────

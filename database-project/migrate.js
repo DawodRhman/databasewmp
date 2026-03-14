@@ -67,6 +67,20 @@ async function runMigrations() {
             console.log(`  ⏳ Running: ${migration}`);
             const sql = fs.readFileSync(path.join(MIGRATIONS_DIR, migration), 'utf8');
 
+            // Check for known missing tables and skip if referenced
+            const missingTables = ['efiling_file_workflows'];
+            let skipMigration = false;
+            for (const table of missingTables) {
+                if (sql.includes(table)) {
+                    console.warn(`  ⚠️ Skipping migration ${migration} because it references missing table: ${table}`);
+                    skipMigration = true;
+                    break;
+                }
+            }
+            if (skipMigration) {
+                continue;
+            }
+
             await client.query('BEGIN');
             try {
                 await client.query(sql);
